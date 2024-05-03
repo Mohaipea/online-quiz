@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    {{ user.username }}
-    {{ name }}
-    {{ user.email }}
+    <p>  {{ user.username }} : نام کاربری </p>
+    <p>{{ name }} : نام </p>
+    <p> {{ user.email }} : ایمیل  </p>
     <p>
         {% for p in participants %}
-            {{ p.quiz }}
-            {{ p.total_score }}
+             <p>{{ p.quiz }}  : عنوان کوییز </p>
+            <p>{{ p.total_score }}  : عنوان کوییز </p>
             {{ p.date }}
             {{ p.wrong_answers }}
         {% endfor %}

@@ -3,14 +3,14 @@
 {% block content %}
     <h1>home page</h1>
     {% if request.user.is_authenticated %}
-        {{ request.user.username }}
+        <p><a href="{% url 'profile' %}">ورود به پروفایل</a></p>
         <a href="{% url 'logout' %}">خروج</a>
     {% else %}
         <a href="{% url 'login' %}">ورود به حساب کاربری</a>
     {% endif %}
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 2vw">
             
             <div class="col-md-9">
                 <a href="{% url 'create_quiz' %}">ایجاد آزمون جدید</a>
