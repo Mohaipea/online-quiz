@@ -1,0 +1,17 @@
+{% for q in quizes %}
+    <form action="{% url 'quiz' q.title %}" method="POST" style="direction: rtl">
+    {% csrf_token %}
+        <small> {{ q.created|timesince }} قبل </small>
+        <br>
+        <label> عنوان : {{ q.title }}  </label>
+        <br>
+        <label>موضوع : {{ q.topics }}</label>
+        <br>
+        <label> توضیحات : {{ q.description|truncatewords:10 }}</label>
+        <br>
+        <label> بارم کل : {{ q.total_score }}</label>
+        <br>
+        <input type="submit" class="btn btn-primary" value="شروع آزمون">
+    </form>
+    <hr style="color: black;border: solid 1px">
+{% endfor %}

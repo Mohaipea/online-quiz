@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {{ user.username }}
+    {{ name }}
+    {{ user.email }}
+    <p>
+        {% for p in participants %}
+            {{ p.quiz }}
+            {{ p.total_score }}
+            {{ p.date }}
+            {{ p.wrong_answers }}
+        {% endfor %}
+    </p>
+
+
+    <ul>
+        {% for q in quiz %}
+            <li><a href="{% url 'quiz-students' q.title %}">{{ q.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+
+
+    <a href="{% url 'edit-profile' %}">ویرایش اطلاعات</a>
+{% endblock %}

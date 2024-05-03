@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p style="float: right;text-align: right;font-size: larger;font-weight: bold;margin-top: 2vw">
+        {{ question.question_text }}
+    </p>
+    <br>
+    <div style="text-align: right;margin-top: 3vw">
+        {% for a in answers %}
+            <form action="/answer/{{ a.answer }}/{{ a.question }}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="{{ a }}" style="margin-top: 1vw">
+            </form>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

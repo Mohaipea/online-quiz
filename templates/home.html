@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>home page</h1>
+    {% if request.user.is_authenticated %}
+        {{ request.user.username }}
+        <a href="{% url 'logout' %}">خروج</a>
+    {% else %}
+        <a href="{% url 'login' %}">ورود به حساب کاربری</a>
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-9">
+                <a href="{% url 'create_quiz' %}">ایجاد آزمون جدید</a>
+                <hr>
+                {% include 'quiz/quiz_component.html' %}
+            </div>
+            <div class="col-md-3 text-center">
+                <h3 style="text-align: right">موضوعات</h3>
+                {% include 'quiz/topics_component.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

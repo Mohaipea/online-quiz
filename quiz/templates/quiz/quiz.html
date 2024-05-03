@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-8 text-right" style="font-size: larger;font-weight: bold;margin-top: 2vw">
+                {{ quiz.title }} <label> : عنوان آزمون</label>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div style="float: right;text-align: right">
+                <p style="font-weight: bold;font-size: large"> : سوالات آزمون</p>
+                <p style="color: red">برای پاسخ دادن به هر سوال روی متن سوال کلیک کنید</p>
+                <br>
+                {% for q in questions %}
+                    <p style="margin-right: 3vw">
+                        <a href="{% url 'question' q.question_text %}"
+                           style="color:black;text-decoration: none;font-weight: bold">
+                            ( <label for=""> نمره </label>{{ q.score }} )  {{ q.question_text }} *
+                        </a>
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <form style="float: right;margin-right: 2vw" action="{% url 'finish' quiz.title %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">اتمام آزمون</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
